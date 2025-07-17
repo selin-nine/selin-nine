@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/07/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>学习如何将文章发布到hexo博客上</title>
+    <url>/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/</url>
+    <content><![CDATA[<blockquote>
+<blockquote>
+<p>├── _config.landscape.yml：主题配置文件，如果&#x20;<br>├── _config.yml：站点配置文件，对站点进行配置。&#x20;<br>├── node_modules：用来存储已安装的各类依赖包。&#x20;<br>├── package-lock.json：包版本依赖锁文件。&#x20;<br>├── package.json：应用数据，Hexo的版本以及相关依赖包的版本等。&#x20;<br>├── scaffolds：博客模版文件夹，包含page.md，post.md，draft.md三种。&#x20;<br>├── source：资源文件夹，存放静态资源如博客md文件、图片等。&#x20;<br>└── themes：主题文件夹，Hexo通过将网站内容与主题组合来生成静态网站。</p>
+</blockquote>
+</blockquote>
+<h1 id="主要流程"><a href="#主要流程" class="headerlink" title="主要流程"></a>主要流程</h1><p><a href="https://cloud.tencent.com/developer/article/1896721">博客的初始化(细节)</a><br><a href="https://blog.csdn.net/jianzhang11/article/details/107031918">博客的启动\配置(主参考)</a>                            <a href="https://blog.csdn.net/black_sneak/article/details/139600633">Github入门教程，适合新手学习（非常详细）-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_49272453/article/details/147440391">vscode中的markdown使用</a><br><a href="https://blog.csdn.net/m0_47221837/article/details/147049956">markdown的语法参考链接</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/configuration">hexo的具体配置部分(官网)</a></p>
+<p><strong>创建博客后,对网页进行修改后,因缓存原因,应该对博客进行服务器重启,或者清除浏览器缓存</strong><br>命令为<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image.png" alt="image"></p>
+<p><del>现在重心不是在主题上,所以简单参考一下就好,先默认用<strong>博客的启动\配置</strong>中的样式</del></p>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p><strong>问题1：截图中路径依赖未下完全，导致无法打开博客的问题</strong><br><a href="https://blog.csdn.net/Calvin_zhou/article/details/108754264">对症下药的解决链接，进行尝试</a><br>哈哈，根本用不上，我就是个大聪明，文件名写错了！！！</p>
+<p><strong>问题2：md文档中图片正常显示，博客中图片不显示的问题</strong></p>
+<p>解决方案：<a href="https://blog.csdn.net/m0_63398413/article/details/137103772">step5</a>,感觉这解决方案就是重复之前的配置,但讲明白了<em>自动创建新文章的部分机制</em> 还是可以看看的</p>
+<p>真正原因:参考这篇文章<a href="https://blog.csdn.net/m0_43401436/article/details/107191688">hexo博客中插入图片失败——解决思路及个人最终解决办法_hexo 文章插入图片失败-CSDN博客</a>)</p>
+<ul>
+<li>创建hexo个人博客，hexo的任务是将md文档，转化成html。而md文档图片路径用的是<strong>相对路径</strong>，而heml文档用的则是<strong>绝对路径</strong>，所以涉及一个路径转换，也是要安装插件<strong>hexo-asset-image</strong>的原因。出现问题后查看两个文档的路径发现转换出现问题，查看插件<strong>hexo-asset-image</strong>的使用文档（READEM.md）</li>
+<li>将路径改完后发现,部分照片可以使用,<strong>图片示例</strong>如下<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image-20250716201321837.png" alt="问题3">,此时应该是存放html的文件中不包含图片,将图片复制过去,应该就能成功。</li>
+</ul>
+<p><strong>问题3：打开github托管后的网址出现404</strong></p>
+<p><a href="D:\HexoBlog\blog\source_posts\学习如何将文章发布到hexo博客上\image-20250717061759540.png">image-20250717061759540</a></p>
+<p>修改依照：<a href="https://github.com/qiubaiying/qiubaiying.github.io/wiki/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B#Rename">博客搭建详细教程 · qiubaiying&#x2F;qiubaiying.github.io Wiki · GitHub</a></p>
+<p>原因：<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image-20250717083032795.png" alt="image-20250717083032795"></p>
+<p><strong>一定不要忘记更新mdw</strong></p>
+<p>结果：成功部署<br>心得：细心一点吧，但是如果能细心的话还是倒霉熊么</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>渗透测试学习-第一天</title>
+    <url>/2025/07/17/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+</search>

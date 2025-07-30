@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta property="og:type" content="website">
@@ -146,7 +146,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/17/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E5%A4%A9/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -160,7 +160,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2025/07/17/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="post-title-link" itemprop="url">渗透测试学习-第一天</a>
+            <a href="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/" class="post-title-link" itemprop="url">学习渗透测试的第二天 -- SQL注入攻击</a>
         </h2>
 
         <div class="post-meta">
@@ -170,8 +170,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2025-07-17 19:36:34" itemprop="dateCreated datePublished" datetime="2025-07-17T19:36:34+08:00">2025-07-17</time>
+              <time title="Created: 2025-07-26 13:08:38" itemprop="dateCreated datePublished" datetime="2025-07-26T13:08:38+08:00">2025-07-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-07-31 01:45:33" itemprop="dateModified" datetime="2025-07-31T01:45:33+08:00">2025-07-31</time>
+              </span>
 
           
 
@@ -184,7 +191,129 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <p>**什么是SQL注入攻击：**开发者在开发过程中直接将url的get参数和post参数（用户输入的）直接与SQL语句进行拼接</p>
+<p><strong>SQL注入分类：</strong></p>
+<p>1.可回显注入：联合查询注入、报错注入、通过注入进行dns请求，达到可回显目的</p>
+<p>2.不可回显的注入：bool盲注、时间盲注</p>
+<p>3.二次注入：自己编写脚本实现自动化注入</p>
+<p>这里书中提到了waf（wab<strong>应用</strong>防火墙 – 是），觉得要了解一下基本的机制：*<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38265137/article/details/106742893">WAF基本原理与部署方式-CSDN博客</a></p>
+<p>就这篇文章进行学习：（主要记录不好理解的部分和以前没听过的部分，所以不成系统，概述性的了解，并未对其中的连接性介绍进行拆解）</p>
+<p>​			1。功能概述：流量过滤、安全审计、防止cc攻击（攻击者大量请求-&gt;程序消耗大-&gt;服务器拒绝服务Doss）、应用交付网络（优化网络、加速设备）</p>
+<p>​			2.作用：保障业务可靠性、可用性、安全性</p>
+<p>​			3.主要功能：常见10大漏洞的防护     发现攻击IP锁定     防止CC攻击</p>
+<p>​			4.发展历程：（IPS架构、反向代理、透明代理、流模式）目前国内的透明代理模式并不如国外的流模式waf，缺失主要在于会改变数据包</p>
+<p><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250727200312785.png" alt="image-20250727200312785"></p>
+<h2 id="联合查询sql注入–以例说明"><a href="#联合查询sql注入–以例说明" class="headerlink" title="联合查询sql注入–以例说明"></a>联合查询sql注入–以例说明</h2><p>1.注入点判断，数字型&#x2F;字符型，正常来讲带闭合符号的判断，数字型判断正误正确则为数字型，反之则为字符型。</p>
+<ul>
+<li>正常输入判断正确判断条件，返回正常</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731005519792.png" alt="image-20250731005519792"></li>
+<li>输入错误的片段条件，返回值仍然正常</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731005933279.png" alt="image-20250731005933279"></li>
+<li>说明这个判断为字符型，不是数字型</li>
+</ul>
+<p>2.判断字段数（原因： union有严格的约束条件，必须保证字段数一致）</p>
+<ul>
+<li>可以使用**oerder by number （例：1’ order by 1#）**这种类型的语句，逐层递加number直到报错，报错前的number即为字段数。</li>
+<li>具体内容如下：</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013725113.png" alt="image-20250731013725113">正常回显，无报错</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013825243.png" alt="image-20250731013825243">正常回显，无报错</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013902317.png" alt="image-20250731013902317">应报错，具体报错如下图：<img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013944706.png" alt="image-20250731013944706">说明此字段数应有两位。</li>
+</ul>
+<p>3.查看闭合类型：（原理：输入闭合符号进行测试，只要数字后边的字符不是闭合符的，数据库都会把错误的数据转化成正确的数据类型，例1 and 1&#x3D;2#，返回值是正确的，但是若输入的在数字后面的字符恰好是闭合符，则会形成闭合，若闭合后形成的sql语句是错误的，那么sql语句执行就会错误，从而造成页面显示错误）<strong>大部分闭合都是单引号</strong></p>
+<ul>
+<li>输入以下图片中的语句，则会报错，因为数据库的查询语句处理不来**1&#x3D;2#**这个错误语句</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731011655071.png" alt="image-20250731011655071"></li>
+</ul>
+<p>4.查看回显位（查看正常有几个可以正常返回查询数据的点位）</p>
+<ul>
+<li>查询语句如下，<strong>1’ union select 1,2#</strong>，具体如下图所示：</li>
+<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731012914325.png" alt="image-20250731012914325">回显正常、</li>
+<li>当输入 **1’ union select 1,2,3#**回显异常，因为超出了可回显的范围</li>
+</ul>
+<p>5.查数据库</p>
+<p>6.在数据库中查找表</p>
+<p>7.在表中查找字段(列)</p>
+<p>8.在列中查找数据</p>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><ul>
+<li>updatexml</li>
+<li>floor</li>
+<li>exp</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/25/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="selin-nine">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="selin的学习记录">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
+            <a href="/2025/07/25/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="post-title-link" itemprop="url">学习渗透测试的第一天</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-07-25 19:30:25" itemprop="dateCreated datePublished" datetime="2025-07-25T19:30:25+08:00">2025-07-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-07-26 13:07:38" itemprop="dateModified" datetime="2025-07-26T13:07:38+08:00">2025-07-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="常用工具的安装与使用"><a href="#常用工具的安装与使用" class="headerlink" title="常用工具的安装与使用"></a>常用工具的安装与使用</h2><h3 id="sqlmap：一个自动检测sql注入漏洞的软件"><a href="#sqlmap：一个自动检测sql注入漏洞的软件" class="headerlink" title="sqlmap：一个自动检测sql注入漏洞的软件"></a>sqlmap：一个自动检测sql注入漏洞的软件</h3><p>​	1.brupsuit中也存在sqlmap的插件</p>
+<p>​	2.用sqlmap扫描学校网址</p>
+<p><img src="/2025/07/25/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/image-20250725204649636.png" alt="扫描学校网址"></p>
+<p>​	分析：结果是不成功的，根本没有连接上，我判断是学校网址是有waf防护的，因此接下来的行为应该是绕过waf，来进行sql的漏扫。</p>
+<p>​	但现在只是简单的尝试，并不涉及waf绕过</p>
+<p>​	3.提到了waf绕过——Tamper（有一些常用的temper、还可以自己编写）</p>
+<h3 id="浏览器和插件"><a href="#浏览器和插件" class="headerlink" title="浏览器和插件"></a>浏览器和插件</h3><p>​	1.developer tools</p>
+<p>​	2.hasher – brup 中的 decoder模块</p>
+<p>​	**注：**这些插件太多了，打算随用随安吧。</p>
+<p>直接进入<strong>第二章：SQL注入攻击</strong></p>
+
       
     </div>
 
@@ -423,7 +552,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

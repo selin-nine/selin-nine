@@ -202,58 +202,58 @@
 <p>​			2.作用：保障业务可靠性、可用性、安全性</p>
 <p>​			3.主要功能：常见10大漏洞的防护     发现攻击IP锁定     防止CC攻击</p>
 <p>​			4.发展历程：（IPS架构、反向代理、透明代理、流模式）目前国内的透明代理模式并不如国外的流模式waf，缺失主要在于会改变数据包</p>
-<p><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250727200312785.png" alt="image-20250727200312785"></p>
+<p><img src="/image-20250727200312785.png" alt="image-20250727200312785"></p>
 <h2 id="联合查询sql注入–以例说明（dvwa、SQL-injection、low）"><a href="#联合查询sql注入–以例说明（dvwa、SQL-injection、low）" class="headerlink" title="联合查询sql注入–以例说明（dvwa、SQL injection、low）"></a>联合查询sql注入–以例说明（dvwa、SQL injection、low）</h2><p>1.注入点判断，数字型&#x2F;字符型，正常来讲带闭合符号的判断，数字型判断正误正确则为数字型，反之则为字符型。</p>
 <ul>
 <li>正常输入判断正确判断条件，返回正常</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731005519792.png" alt="image-20250731005519792"></li>
+<li><img src="/image-20250731005519792.png" alt="image-20250731005519792"></li>
 <li>输入错误的片段条件，返回值仍然正常</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731005933279.png" alt="image-20250731005933279"></li>
+<li><img src="/image-20250731005933279.png" alt="image-20250731005933279"></li>
 <li>说明这个判断为字符型，不是数字型</li>
 </ul>
 <p>2.判断字段数（原因： union有严格的约束条件，必须保证字段数一致）</p>
 <ul>
 <li>可以使用**oerder by number （例：1’ order by 1#）**这种类型的语句，逐层递加number直到报错，报错前的number即为字段数。</li>
 <li>具体内容如下：</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013725113.png" alt="image-20250731013725113">正常回显，无报错</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013825243.png" alt="image-20250731013825243">正常回显，无报错</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013902317.png" alt="image-20250731013902317">应报错，具体报错如下图：<img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731013944706.png" alt="image-20250731013944706">说明此字段数应有两位。</li>
+<li><img src="/image-20250731013725113.png" alt="image-20250731013725113">正常回显，无报错</li>
+<li><img src="/image-20250731013825243.png" alt="image-20250731013825243">正常回显，无报错</li>
+<li><img src="/image-20250731013902317.png" alt="image-20250731013902317">应报错，具体报错如下图：<img src="/image-20250731013944706.png" alt="image-20250731013944706">说明此字段数应有两位。</li>
 </ul>
 <p>3.查看闭合类型：（原理：输入闭合符号进行测试，只要数字后边的字符不是闭合符的，数据库都会把错误的数据转化成正确的数据类型，例1 and 1&#x3D;2#，返回值是正确的，但是若输入的在数字后面的字符恰好是闭合符，则会形成闭合，若闭合后形成的sql语句是错误的，那么sql语句执行就会错误，从而造成页面显示错误）<strong>大部分闭合都是单引号</strong></p>
 <ul>
 <li>输入以下图片中的语句，则会报错，因为数据库的查询语句处理不来**1&#x3D;2#**这个错误语句</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731011655071.png" alt="image-20250731011655071"></li>
+<li><img src="/image-20250731011655071.png" alt="image-20250731011655071"></li>
 </ul>
 <p>4.查看回显位（查看正常有几个可以正常返回查询数据的点位，要求前边的查询语句是非法的，所以只执行后边的语句）</p>
 <ul>
 <li>查询语句如下，<strong>-1’ union select 1,2#</strong>，具体如下图所示：</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731012914325.png" alt="image-20250731012914325">回显正常、</li>
+<li><img src="/image-20250731012914325.png" alt="image-20250731012914325">回显正常、</li>
 <li>当输入 **-1’ union select 1,2,3#**回显异常，因为超出了可回显的范围</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731203556454.png" alt="image-20250731203556454"></li>
+<li><img src="/image-20250731203556454.png" alt="image-20250731203556454"></li>
 </ul>
 <p>5.查数据库库名()</p>
 <ul>
 <li>输入语句，因为判断有两个回显位，1占一个，另一个函数输出所有的数据库名**-1’ union select 1,group_concat(database())#**记得加注释符，没有注释符会报错。</li>
 <li>回显如下，返回数据库名”dvwa”</li>
-<li><img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731204706287.png" alt="image-20250731204706287"></li>
+<li><img src="/image-20250731204706287.png" alt="image-20250731204706287"></li>
 <li><strong>可以使用group_concat()将所有内容写入一行并输出</strong></li>
 </ul>
 <p>6.在数据库中查找表</p>
 <ul>
 <li>在数据库”dvwa“中查找表名的语句为**-1’ union 1,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’dvwa’#**（含义为查找数据库中”   “库的所有表名）</li>
-<li>具体返回结果如下<img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731212319418.png" alt="image-20250731212319418"></li>
+<li>具体返回结果如下<img src="/image-20250731212319418.png" alt="image-20250731212319418"></li>
 <li><strong>information_schema</strong>是mysql自带的库，里边存放着所有的表名和字段名（列名）</li>
 </ul>
 <p>7.在表中查找字段(列)</p>
 <ul>
 <li>在数据库中名为“user”的表中查找字段名的语句为**-1’ union select group_concat(column_name),2 from information_schema.columns where table_schema&#x3D;’dvwa’ and table_name&#x3D;’users’#**(含义为查找的数据库中库名为‘dvwa’和表名为‘users’中的列名)</li>
-<li>具体返回结果如下：<img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731215249021.png" alt="image-20250731215249021"></li>
+<li>具体返回结果如下：<img src="/image-20250731215249021.png" alt="image-20250731215249021"></li>
 <li><strong>table_schema为库名，table_name为表名，column_name为列名</strong></li>
 </ul>
 <p>8.在列中查找数据</p>
 <ul>
 <li>查找一个列中的数据的语句为**-1’ union select user,password from users#**</li>
-<li>具体返回结果如下，得到用户和密码<img src="/2025/07/26/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9-SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/image-20250731220805812.png" alt="image-20250731220805812"></li>
+<li>具体返回结果如下，得到用户和密码<img src="/image-20250731220805812.png" alt="image-20250731220805812"></li>
 </ul>
 
       
@@ -321,7 +321,7 @@
       
           <h2 id="常用工具的安装与使用"><a href="#常用工具的安装与使用" class="headerlink" title="常用工具的安装与使用"></a>常用工具的安装与使用</h2><h3 id="sqlmap：一个自动检测sql注入漏洞的软件"><a href="#sqlmap：一个自动检测sql注入漏洞的软件" class="headerlink" title="sqlmap：一个自动检测sql注入漏洞的软件"></a>sqlmap：一个自动检测sql注入漏洞的软件</h3><p>​	1.brupsuit中也存在sqlmap的插件</p>
 <p>​	2.用sqlmap扫描学校网址</p>
-<p><img src="/2025/07/25/%E5%AD%A6%E4%B9%A0%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/image-20250725204649636.png" alt="扫描学校网址"></p>
+<p><img src="/image-20250725204649636.png" alt="扫描学校网址"></p>
 <p>​	分析：结果是不成功的，根本没有连接上，我判断是学校网址是有waf防护的，因此接下来的行为应该是绕过waf，来进行sql的漏扫。</p>
 <p>​	但现在只是简单的尝试，并不涉及waf绕过</p>
 <p>​	3.提到了waf绕过——Tamper（有一些常用的temper、还可以自己编写）</p>
@@ -401,7 +401,7 @@
 <h1 id="主要流程"><a href="#主要流程" class="headerlink" title="主要流程"></a>主要流程</h1><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1896721">博客的初始化(细节)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/jianzhang11/article/details/107031918">博客的启动\配置(主参考)</a>                            <a target="_blank" rel="noopener" href="https://blog.csdn.net/black_sneak/article/details/139600633">Github入门教程，适合新手学习（非常详细）-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49272453/article/details/147440391">vscode中的markdown使用</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47221837/article/details/147049956">markdown的语法参考链接</a></p>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">hexo的具体配置部分(官网)</a></p>
-<p><strong>创建博客后,对网页进行修改后,因缓存原因,应该对博客进行服务器重启,或者清除浏览器缓存</strong><br>命令为<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image.png" alt="image"></p>
+<p><strong>创建博客后,对网页进行修改后,因缓存原因,应该对博客进行服务器重启,或者清除浏览器缓存</strong><br>命令为<img src="/image.png" alt="image"></p>
 <p><del>现在重心不是在主题上,所以简单参考一下就好,先默认用<strong>博客的启动\配置</strong>中的样式</del></p>
 <h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p><strong>问题1：截图中路径依赖未下完全，导致无法打开博客的问题</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Calvin_zhou/article/details/108754264">对症下药的解决链接，进行尝试</a><br>哈哈，根本用不上，我就是个大聪明，文件名写错了！！！</p>
 <p><strong>问题2：md文档中图片正常显示，博客中图片不显示的问题</strong></p>
@@ -409,12 +409,12 @@
 <p>真正原因:参考这篇文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_43401436/article/details/107191688">hexo博客中插入图片失败——解决思路及个人最终解决办法_hexo 文章插入图片失败-CSDN博客</a>)</p>
 <ul>
 <li>创建hexo个人博客，hexo的任务是将md文档，转化成html。而md文档图片路径用的是<strong>相对路径</strong>，而heml文档用的则是<strong>绝对路径</strong>，所以涉及一个路径转换，也是要安装插件<strong>hexo-asset-image</strong>的原因。出现问题后查看两个文档的路径发现转换出现问题，查看插件<strong>hexo-asset-image</strong>的使用文档（READEM.md）</li>
-<li>将路径改完后发现,部分照片可以使用,<strong>图片示例</strong>如下<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image-20250716201321837.png" alt="问题3">,此时应该是存放html的文件中不包含图片,将图片复制过去,应该就能成功。</li>
+<li>将路径改完后发现,部分照片可以使用,<strong>图片示例</strong>如下<img src="/image-20250716201321837.png" alt="问题3">,此时应该是存放html的文件中不包含图片,将图片复制过去,应该就能成功。</li>
 </ul>
 <p><strong>问题3：打开github托管后的网址出现404</strong></p>
 <p><a href="D:\HexoBlog\blog\source_posts\学习如何将文章发布到hexo博客上\image-20250717061759540.png">image-20250717061759540</a></p>
 <p>修改依照：<a target="_blank" rel="noopener" href="https://github.com/qiubaiying/qiubaiying.github.io/wiki/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B#Rename">博客搭建详细教程 · qiubaiying&#x2F;qiubaiying.github.io Wiki · GitHub</a></p>
-<p>原因：<img src="/2025/07/15/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E7%AB%A0%E5%8F%91%E5%B8%83%E5%88%B0hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A/image-20250717083032795.png" alt="image-20250717083032795"></p>
+<p>原因：<img src="/image-20250717083032795.png" alt="image-20250717083032795"></p>
 <p><strong>一定不要忘记更新mdw</strong></p>
 <p>结果：成功部署<br>心得：细心一点吧，但是如果能细心的话还是倒霉熊么</p>
 
